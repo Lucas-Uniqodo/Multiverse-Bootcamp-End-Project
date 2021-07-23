@@ -1,7 +1,3 @@
-// copy over loadFile.js and restaurants.json from your sqlStuff folder to your web server folder -
-// edit loadFile.js to use restaurants-seq.sqlite (line 7)
-// run node server.js then ctrl-c and run node loadFile.js - this should populate your database with seed data
-
 const express = require("express");
 const Handlebars = require("handlebars");
 const expressHandlebars = require("express-handlebars");
@@ -25,10 +21,6 @@ app.engine("handlebars", handlebars);
 app.set("view engine", "handlebars");
 app.use(express.json());
 
-//this establishes the realationships between tables
-Category.hasMany(Item);
-Item.belongsTo(Category);
-
 connection
 	.sync({
 		//refreshs database every time server is rerun
@@ -44,10 +36,6 @@ connection
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-app.get("/home", async (request, response) => {
-	response.render("home");
-});
 
 app.get("/home", async (request, response) => {
 	response.render("home");
