@@ -17,9 +17,13 @@
   },
   "homepage": "https://github.com/Lucas-Uniqodo/Multiverse-Bootcamp-End-Project#readme",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
     "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "handlebars": "^4.7.7",
     "jest": "^27.0.6",
     "sequelize": "^6.6.5",
-    "sqlite": "^4.0.23"
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.2"
   }
 }
