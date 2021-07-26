@@ -5,4 +5,4 @@ const sequelize = new Sequelize('database', 'username', 'password', {
     storage: './omniverse.sqlite',
     freezeTableName: true
 });
- module.exports={sequelize, DataTypes, Model};
+module.exports={sequelize, DataTypes, Model};

@@ -6,8 +6,8 @@ const {
 } = require("@handlebars/allow-prototype-access");
 const connection = require("./sequelize-connect");
 
-const Item = require("./models/Item");
-const Category = require("./models/Category");
+const Items = require("./models/Item");
+const Categories = require("./models/Category");
 
 const app = express();
 const port = 3000;
@@ -21,10 +21,13 @@ app.engine("handlebars", handlebars);
 app.set("view engine", "handlebars");
 app.use(express.json());
 
+Categories.hasMany(Items);
+Items.belongsTo(Categories);
+
 connection
 	.sync({
 		//refreshs database every time server is rerun
-		// force: true
+		force: true,
 	})
 	.then(() => {
 		console.log("Connected to DB");
@@ -38,6 +41,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/home", async (request, response) => {
+	response.render("home");
+});
+
+app.get("/", async (request, response) => {
 	response.render("home");
 });
 
