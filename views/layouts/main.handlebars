@@ -34,7 +34,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         
         <li class="nav-item dropdown">
@@ -42,20 +42,20 @@
             Category
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <li><a class="dropdown-item" href="http://localhost:3000/categories">View All</a></li>
+             <li><a class="dropdown-item" href="/categories">View All</a></li>
               <li style="text-decoration: underline; text-align: center;"><hr  class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Electronics</a></li>
-            <li><a class="dropdown-item" href="#">Jewellery</a></li>
+            <li><a class="dropdown-item" href="/categories/1">Electronics</a></li>
+            <li><a class="dropdown-item" href="/categories/2">Jewellery</a></li>
             <li style="text-align: center;"><hr  class="dropdown-divider">Clothing</li>
             <li style="text-decoration: underline; text-align: center;"><hr  class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Men's</a></li>
-            <li><a class="dropdown-item" href="#">Women's</a></li>
+            <li><a class="dropdown-item" href="/categories/3">Men's</a></li>
+            <li><a class="dropdown-item" href="/categories/4">Women's</a></li>
           </ul>
            <li class="nav-item">
           <a class="nav-link" href="#">Admin</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#"><i style="color: orange; font-size:4vh" class="fas fa-shopping-cart"></i></a>
+            <a class="nav-link" href="/cart"><i style="color: orange; font-size:4vh" class="fas fa-shopping-cart"></i></a>
           </li>
         </li>
       </ul>
@@ -76,7 +76,7 @@
         <div style="text-align: center; " class="social">
         <a style="color: orange;" href=""><i style="color: orange; font-size:4vh" class="fas fa-globe"></i>mniverse</a>
         </div>
-         <ul style="text-align: center;" class="list-inline">
+          <ul style="text-align: center;" class="list-inline">
                 
                 <li  class="list-inline-item"><a title="Homepage" style="color: orange;" href="#home">Home</a></li>
                 <li class="list-inline-item"><a title="Email querys" style="color: orange;" href="mailto:andi56@hotmail.co.uk">Email</a></li>
@@ -99,3 +99,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
+
+<script>
+	cartList = []
+
+	function addToCart(id) {
+		cartList.push(id)
+    console.log(id)
+        localStorage.setItem("cartList", JSON.stringify(cartList))
+		displayCart()
+    }
+
+	function displayCart() {
+		document.getElementById("cartList").innerHTML = ""
+		cartList.forEach(cartItem => {
+			let listItem = document.createElement("li"); 
+			listItem.innerHTML =`<p
+							class="dropdown-item col"
+							>${cartItem}</p>`
+			document.getElementById("cartList").appendChild(listItem)
+		})
+	}
+
+
+
+// retrieving local storage
+		let cartListStorage = localStorage.getItem("cartList")
+
+		//if local storage is found, updates the task managers corresponding attributes and displays local storage's content
+		if(cartListStorage){
+			cartList = JSON.parse(cartListStorage)
+			displayCart()
+		} 
+</script>

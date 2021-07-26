@@ -20,7 +20,7 @@ const handlebars = expressHandlebars({
 app.engine("handlebars", handlebars);
 app.set("view engine", "handlebars");
 app.use(express.json());
-app.use(express.static('views/images')); 
+app.use(express.static("views/images"));
 
 Category.hasMany(Item);
 Item.belongsTo(Category);
@@ -51,7 +51,7 @@ app.get("/", async (request, response) => {
 
 app.get("/categories", async (request, response) => {
 	const categories = await Category.findAll();
-	console.log(categories)
+	console.log(categories[0].categoryImage);
 	response.render("categories", { categories });
 });
 
@@ -64,7 +64,6 @@ app.get("/categories/:id", async (request, response) => {
 		where: { id: request.params.id },
 		include: [Item],
 	});
-	console.log(category)
 	response.render("items", { category });
 });
 
