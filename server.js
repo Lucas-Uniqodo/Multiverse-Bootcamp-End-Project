@@ -51,6 +51,7 @@ app.get("/", async (request, response) => {
 
 app.get("/categories", async (request, response) => {
 	const categories = await Category.findAll();
+	console.log(categories)
 	response.render("categories", { categories });
 });
 
