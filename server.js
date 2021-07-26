@@ -27,7 +27,7 @@ Items.belongsTo(Categories);
 connection
 	.sync({
 		//refreshs database every time server is rerun
-		force: true,
+		// force: true,
 	})
 	.then(() => {
 		console.log("Connected to DB");
