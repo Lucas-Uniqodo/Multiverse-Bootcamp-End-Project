@@ -27,7 +27,7 @@ Items.belongsTo(Categories);
 connection
 	.sync({
 		//refreshs database every time server is rerun
-		force: true
+		force: true,
 	})
 	.then(() => {
 		console.log("Connected to DB");
@@ -41,6 +41,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/home", async (request, response) => {
+	response.render("home");
+});
+
+app.get("/", async (request, response) => {
 	response.render("home");
 });
 
