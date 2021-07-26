@@ -1,0 +1,38 @@
+<div class="container">
+    <h1 style="text-align: center;">{{category.name}}</h1>
+    <div class="row">
+         {{#each category.Items}}
+        <div class="card col-md-3" >
+           
+  <img style=" width:240px; height: 200px;" src="{{this.image}}" class="card-img-top" alt="..."> 
+  <div class="card-body">
+    <h5 class="card-title">{{this.title}}</h5>
+    <p class="card-text">{{this.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{this.category}}</li>
+    <li class="list-group-item">£{{this.price}}</li>
+    <li class="list-group-item">Select Quantity: <input type="number" value="1" min="1" max="999" /></li>
+    
+  </ul>
+ 
+  <div class="card-body">
+    <a href="#" class="card-link"><button type="button" class="btn btn-warning">Add to Cart</button></a>
+  </div>
+</div>
+ {{/each}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
