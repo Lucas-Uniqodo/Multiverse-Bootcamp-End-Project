@@ -1,0 +1,31 @@
+@startuml Omniverse Sequence Diagram
+
+skinparam actorStyle awesome
+
+actor Customer
+participant OmniverseFrontend
+participant OmniverseAPI
+database OmniverseDatabase
+
+
+Customer -> OmniverseFrontend: Access/Browse website
+OmniverseFrontend -> OmniverseAPI: GET request
+OmniverseAPI -> OmniverseDatabase: GET request
+
+OmniverseDatabase -> OmniverseAPI: Response
+OmniverseAPI -> OmniverseFrontend: Response
+OmniverseFrontend -> Customer: Return HTML
+
+Customer -> OmniverseFrontend: Add to/update cart
+
+Customer -> OmniverseFrontend: Request checkout
+OmniverseFrontend -> OmniverseAPI: Request checkout
+OmniverseAPI -> OmniverseDatabase: Request checkout
+
+OmniverseDatabase -> OmniverseAPI: Response
+OmniverseAPI -> OmniverseFrontend: Response
+OmniverseFrontend -> Customer: Return HTML
+
+
+
+@enduml
