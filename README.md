@@ -7,4 +7,7 @@ Assumptions:
   * The purchase will not be completed
   * No login or user information created or stored
   * No permissions/security will be added to seperate a user from admin personnel
+  * Items are always in stock
+  * Prices never change
+  * No discounts given
   
