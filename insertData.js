@@ -19,8 +19,8 @@ async function loadAndPrint() {
                 let stmt
                 
                 try {
-                    stmt = db.prepare('INSERT INTO Categories (name) VALUES (?)')
-                    stmt.run(category.name)
+                    stmt = db.prepare('INSERT INTO Categories (name, categoryImage) VALUES (?, ?)')
+                    stmt.run(category.name, category.categoryImage)
                     
                 } finally {
                     stmt.finalize();
