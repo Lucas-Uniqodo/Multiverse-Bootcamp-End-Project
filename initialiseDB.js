@@ -14,7 +14,7 @@ function initialise() {
 			db.run("DROP TABLE IF EXISTS Items");
 			// create new, empty tables with specific columns and column types
 			db.run(
-				"CREATE TABLE Categories (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)"
+				"CREATE TABLE Categories (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, categoryImage TEXT)"
 			);
 			db.run(
 				"CREATE TABLE Items (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, price FLOAT, description TEXT, image TEXT, categoryId INT, FOREIGN KEY (categoryId) REFERENCES Categories(id))"

@@ -1,4 +1,5 @@
 <div class="container">
+
     <h1 style="text-align: center;">{{category.name}}</h1>
     <div class="row">
          {{#each category.Items}}
@@ -17,22 +18,12 @@
   </ul>
  
   <div style="text-align:center" class="card-body">
-    <a href="#" class="card-link"><button type="button" class="btn btn-warning">Add to Cart</button></a>
+    <a href="#" 	onclick="addToCart({{this.id}})" class="card-link"><button type="button" class="btn btn-warning">Add to Cart</button></a>
   </div>
 </div>
  {{/each}}
 
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
+
+
 </div>
