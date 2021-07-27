@@ -11,6 +11,7 @@ class Category extends Model {
 Category.init(
 	{
 		name: DataTypes.STRING,
+		categoryImage: DataTypes.STRING,
 	},
 	{
 		sequelize: sequelizeConnect,
