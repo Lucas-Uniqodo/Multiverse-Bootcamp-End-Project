@@ -1,0 +1,54 @@
+
+@startuml Omniverse Class Diagram
+
+title Omniverse - Class Diagram
+
+class Category {
+    description
+    array items
+}
+
+class Electronics {
+
+}
+
+class Mens {
+  
+}
+
+class Womens {
+
+}
+
+class Jewelery {
+
+}
+
+class Item {
+  image
+  Float price 
+  description
+}
+
+class Cart {
+  Array items
+  AddToCart()
+    Checkout()
+}
+
+
+ 
+Cart "0..*" -- "many" Item
+Category "1" -- "many" Item
+Category "1" -- "many" Item
+Category "1" -- "many" Item
+Category "1" -- "many" Item  
+Category <|-- Electronics
+Category <|-- Mens
+Category <|-- Womens
+Category <|-- Jewelery
+
+
+
+
+@enduml
