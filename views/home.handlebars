@@ -1,12 +1,47 @@
 <section>
+  
 	<div class="row justify-content-center align-content-center">
-		<div class="card" style="margin: 20px; width: 40%">
-			<img
-				src="{{category.image}}"
-				alt="image of {{category.name}}"
-			/>
-			<div class="card-body">
-				<h5 class="card-title">{{store.name}}</h5>
-			</div>
-		</div>
-	</div>
+		<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div style="width: 180vh; height:83vh; border-style:outset; border-width:2px; border-color:rgb(255, 189, 66)" class="carousel-inner">
+    <div class="carousel-item active">
+		<div  class="carousel-caption d-none d-md-block">
+        <h5>Gadget Guy</h5>
+        <p>Geek out on some of our latest tech gadgets.</p>
+      </div>
+      <img  src="https://images.immediate.co.uk/production/volatile/sites/4/2020/05/Gadget-Discovery-Club-tech-subscription-box-cool-gadgets-3600bea.jpg?quality=90&resize=620%2C465" class="d-block w-100" alt="...">
+      
+    </div>
+    <div class="carousel-item">
+      <img src="https://cdn.shopify.com/s/files/1/0276/8279/9680/files/DSC_0177-Edit_1600x.jpg?v=1617191062" class="d-block w-100" alt="...">
+      <div  class="carousel-caption d-none d-md-block">
+        <h5>Gem Collector</h5>
+        <p>Treat yourself with some colourful rocks.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://d2c7pv42xi6lat.cloudfront.net/assets/home/featured-prints-f6a2220f23ab3541949fd4fe1baa0120.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Lux Linens</h5>
+        <p>Wrap yourself in our luxury range of linens.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+    <div class="container" style="text-align: center;">
+  	<a href="/categories"><button class="btn btn-warning">Shop now</button></a>
+	<a href="/cart"><button class="btn btn-warning">View cart</button></a>
+</div>
+
