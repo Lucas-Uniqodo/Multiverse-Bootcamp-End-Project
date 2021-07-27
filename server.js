@@ -46,6 +46,10 @@ app.get("/home", async (request, response) => {
 	response.render("home");
 });
 
+app.get("/addForm", async (request, response) => {
+	response.render("addForm");
+});
+
 app.get("/", async (request, response) => {
 	response.render("home");
 });
