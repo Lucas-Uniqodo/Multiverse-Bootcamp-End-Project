@@ -25,6 +25,53 @@
         .navbar-nav {
             justify-content: space-evenly;
         }
+        
+
+      .dropbtn {
+    background-color: #2196F3;
+    color: white;
+    padding: 6px;
+    font-size: 14px;
+    border: none;
+    border-radius: 3px
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd
+}
+
+.dropdown:hover .dropdown-content {
+    display: block
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #097ee8
+}
+
+p{
+  text-align: center;
+}
     </style>
   </head>
 
@@ -48,7 +95,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Category
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {{!--<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
              <li><a class="dropdown-item" href="/categories">View All</a></li>
               <li style="text-decoration: underline; text-align: center;"><hr  class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/categories/1">Electronics</a></li>
@@ -57,7 +104,21 @@
             <li style="text-decoration: underline; text-align: center;"><hr  class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/categories/3">Men's</a></li>
             <li><a class="dropdown-item" href="/categories/4">Women's</a></li>
-          </ul>
+          </ul>--}}
+
+          <div class="dropdown">
+            <div class="dropdown-content"> 
+              <a href="/categories">View All</a> 
+              <hr  class="dropdown-divider">
+              <a href="/categories/1">Electronics</a> 
+              <a href="/categories/2">Jewellery</a>
+              <hr  class="dropdown-divider"><p>Clothing</p>
+              <hr  class="dropdown-divider">
+              <a href="/categories/3">Men's</a>
+              <a href="/categories/4">Women's</a> 
+            </div>
+          </div>
+
            <li class="nav-item">
           <a class="nav-link" href="/admin">Admin</a>
         </li>
