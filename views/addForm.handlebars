@@ -6,34 +6,40 @@
 
     <div style="text-shadow: 1px 1px black; color:orange" class="col-md-12">
         <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Item Image Link:</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter image link here.."></div>
-            <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Item Title:</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter item name.."></div>
+            <form action="/items" method="POST">
+                <label for="image" class="form-label">Item Image Link:</label>
+                <input type="text" class="form-control" id="image" name="image" placeholder="Enter image link here.."></div>
                 <div class="mb-3">
-                    <label for="formGroupExampleInput2" class="form-label">Item Description:</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter item description.."></div>
-                    <div class="row g-3">
-                        <div class="col">
-                            <label for="formGroupExampleInput2" class="form-label">Item Price:</label>
-                            <input type="text" class="form-control" placeholder="Enter item price.." aria-label="Enter item price.."></div>
+                    <label label for="title" class="form-label">Item Title:</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter item title.."></div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Item Description:</label>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Enter item description.."></div>
+                        <div class="row g-3">
                             <div class="col">
-                                <label class="form-label" for="inputGroupSelect01">Select Category:</label>
-                                <select class="form-select" id="inputGroupSelect01">
-                                    <option value="1">Electronics</option>
-                                    <option value="2">Jewellery</option>
-                                    <option value="3">Men's Clothing</option>
-                                    <option value="4">Women's Clothing</option>
-                                </select>
+                                <label for="price" class="form-label">Item Price:</label>
+                                <input id="price" name="price" type="text" class="form-control" placeholder="Enter item price.." aria-label="Enter item price.."></div>
+                                <div class="col">
+                                    <label class="form-label" for="categoryId">Select Category:</label>
+                                    <select id="categoryId" name="categoryId" class="form-select">
+                                        <option value="1">Electronics</option>
+                                        <option value="2">Jewellery</option>
+                                        <option value="3">Men's Clothing</option>
+                                        <option value="4">Women's Clothing</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <br>
                             <br>
-                                <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button style="border-color:black;" class="btn btn-warning" type="button">Submit</button>
-
+                                <br>
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                        <input style="border-color:black;" class="btn btn-warning" type="submit" value="Submit">Submit</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

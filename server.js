@@ -72,30 +72,26 @@ app.get("/categories/:id", async (request, response) => {
 	response.render("items", { category });
 });
 
-app.get("/items/:id", async (request, response) => {
-	const item = await Menu.findByPk(request.params.id);
-	if (!item) {
-		return response.status(404).send("NOT FOUND");
-	}
-
-	response.render("item", { item });
-});
-
 //extension admin stuff
 //create Item
-app.get("/item/post", async (request, response) => {
+app.post("/items", async (request, response) => {
 	const item = await Item.create({
 		title: request.body.title,
 		image: request.body.image,
 		price: request.body.price,
-		categoryId: request.body.categoryId,
+		CategoryId: request.body.categoryId,
 		description: request.body.description,
 	});
 
-	response.redirect("/items/" + item.id); //might not work, haven't tested yet
+	response.redirect("/categories/" + item.CategoryId); //might not work, haven't tested yet
 });
 
 //edit Item
+app.get("/updateForm/:id", async (request, response) => {
+	id = request.params.id;
+	response.render("updateForm", { id });
+});
+
 app.get("/item/:id/put", async (request, response) => {
 	const item = await Item.findByPk(request.params.id);
 	if (!item) {
@@ -115,7 +111,7 @@ app.get("/item/:id/put", async (request, response) => {
 		}
 	);
 
-	response.redirect("/items/" + item.id); //might not work, haven't tested yet
+	response.redirect("/categories/" + item.CategoryId); //might not work, haven't tested yet
 });
 
 //delete item
