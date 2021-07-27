@@ -1,181 +1,217 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-  .collapse.in { display: inline !important; }
-</style>
-    <style>
- body {font-family: Georgia, 'Times New Roman', Times, serif;}
-        .navbar-nav {
-            justify-content: space-evenly;
-        }
-        
+	<head>
+		<link rel="stylesheet" href="/style.css" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<meta charset="utf-8" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+		/>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			body {font-family: Georgia, 'Times New Roman', Times, serif;}
+			.navbar-nav { justify-content: space-evenly; }
+		</style>
+	</head>
 
-      .dropbtn {
-    background-color: #2196F3;
-    color: white;
-    padding: 6px;
-    font-size: 14px;
-    border: none;
-    border-radius: 3px
-}
+	<body>
 
-.dropdown {
-    position: relative;
-    display: inline-block
-}
+		<nav
+			style="border-style: ridge; border-color: orange;"
+			class="navbar navbar-expand-lg navbar-light bg-light"
+		>
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#"><i
+						style="color: orange; font-size:4vh"
+						class="fas fa-globe"
+					></i>MNIVERSE</a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div
+					class="collapse navbar-collapse"
+					id="navbarSupportedContent"
+				>
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a
+								class="nav-link active"
+								aria-current="page"
+								href="/"
+							>Home</a>
+						</li>
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1
-}
+						<li class="nav-item dropdown">
+							<a
+								class="nav-link dropdown-toggle"
+								href="#"
+								id="navbarDropdown"
+								role="button"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+							>
+								Category
+							</a>
+							<ul
+								class="dropdown-menu"
+								aria-labelledby="navbarDropdown"
+							>
+								<li><a
+										class="dropdown-item"
+										href="/categories"
+									>View All</a></li>
+								<li
+									style="text-decoration: underline; text-align: center;"
+								><hr class="dropdown-divider" /></li>
+								<li><a
+										class="dropdown-item"
+										href="/categories/1"
+									>Electronics</a></li>
+								<li><a
+										class="dropdown-item"
+										href="/categories/2"
+									>Jewellery</a></li>
+								<li style="text-align: center;"><hr
+										class="dropdown-divider"
+									/>Clothing</li>
+								<li
+									style="text-decoration: underline; text-align: center;"
+								><hr class="dropdown-divider" /></li>
+								<li><a
+										class="dropdown-item"
+										href="/categories/3"
+									>Men's</a></li>
+								<li><a
+										class="dropdown-item"
+										href="/categories/4"
+									>Women's</a></li>
+							</ul>
+							<li class="nav-item">
+								<a
+									onclick="changeAdminMode()"
+									class="nav-link"
+									href="#"
+								>Admin</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/cart"><i
+										style="color: orange; font-size:4vh"
+										class="fas fa-shopping-cart"
+									></i></a>
+							</li>
+						</li>
+					</ul>
+					<form class="d-flex">
+						<input
+							class="form-control me-2"
+							type="search"
+							placeholder="Search product.."
+							aria-label="Search"
+						/>
+						<button
+							class="btn btn-outline-warning"
+							type="submit"
+						>Search</button>
+					</form>
+				</div>
+			</div>
+		</nav>
 
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block
-}
+		<div class="container">
+			{{{body}}}
+		</div>
 
-.dropdown-content a:hover {
-    background-color: #ddd
-}
+		<div class="footer-basic">
+			<footer>
+				<div style="text-align: center; " class="social">
+					<a style="color: orange;" href=""><i
+							style="color: orange; font-size:4vh"
+							class="fas fa-globe"
+						></i>mniverse</a>
+				</div>
+				<ul style="text-align: center;" class="list-inline">
 
-.dropdown:hover .dropdown-content {
-    display: block
-}
+					<li class="list-inline-item"><a
+							title="Homepage"
+							style="color: orange;"
+							href="#home"
+						>Home</a></li>
+					<li class="list-inline-item"><a
+							title="Email querys"
+							style="color: orange;"
+							href="mailto:andi56@hotmail.co.uk"
+						>Email</a></li>
+					<li class="list-inline-item"><a
+							title="Websites Github code"
+							style="color: orange;"
+							href="https://github.com/Lucas-Uniqodo/Multiverse-Bootcamp-End-Project"
+						>Github</a></li>
+					<li class="list-inline-item"><a
+							title="Help!!"
+							style="color: orange;"
+							href="https://www.google.com/"
+						>Help</a></li>
+					<li class="list-inline-item"><a
+							style="color: orange;"
+							href="https://www.google.com/search?q=cookies&bih=625&biw=1366&rlz=1C1ASVC_enGB948GB949&hl=en&ei=DJD-YLrYCuKh1fAPlae0iAI"
+						>Privacy & Cookies</a></li>
 
-.dropdown:hover .dropbtn {
-    background-color: #097ee8
-}
+				</ul>
+				<br /><p style="text-align: center; color: orange;">
+					Omniverse E-commerce Shop © 2021</p>
+			</footer>
+		</div>
+		<script
+			src="https://kit.fontawesome.com/cb279bfd62.js"
+			crossorigin="anonymous"
+		></script>
 
-p{
-  text-align: center;
-}
-    </style>
-  </head>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
+		></script>
+	</body>
 
-  <body>
-
-<nav style="border-style: ridge; border-color: orange;" class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/home"><i style="color: orange; font-size:4vh" class="fas fa-globe"></i>MNIVERSE</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-
-          <a class="nav-link active" aria-current="page" href="/home">Home</a>
-   
-        </li>
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Category
-          </a>
-          {{!--<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <li><a class="dropdown-item" href="/categories">View All</a></li>
-              <li style="text-decoration: underline; text-align: center;"><hr  class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/categories/1">Electronics</a></li>
-            <li><a class="dropdown-item" href="/categories/2">Jewellery</a></li>
-            <li style="text-align: center;"><hr  class="dropdown-divider">Clothing</li>
-            <li style="text-decoration: underline; text-align: center;"><hr  class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/categories/3">Men's</a></li>
-            <li><a class="dropdown-item" href="/categories/4">Women's</a></li>
-          </ul>--}}
-
-          <div class="dropdown">
-            <div class="dropdown-content"> 
-              <a href="/categories">View All</a> 
-              <hr  class="dropdown-divider">
-              <a href="/categories/1">Electronics</a> 
-              <a href="/categories/2">Jewellery</a>
-              <hr  class="dropdown-divider"><p>Clothing</p>
-              <hr  class="dropdown-divider">
-              <a href="/categories/3">Men's</a>
-              <a href="/categories/4">Women's</a> 
-            </div>
-          </div>
-
-           <li class="nav-item">
-          <a class="nav-link" href="/admin">Admin</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/cart"><i style="color: orange; font-size:4vh" class="fas fa-shopping-cart"></i></a>
-          </li>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search product.." aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-
-<div class="container">
-    {{{body}}}   
-</div>
-<br><br><br><br><br>
- <div class="footer-basic">
-    <footer>
-
-        <div style="text-align: center; text-shadow:1px 1px black;  " class="social">
-        <a style="color: orange;" href="/home"><i style="color: orange; font-size:4vh" class="fas fa-globe"></i>mniverse</a>
-
-        </div>
-          <ul style="text-align: center; text-shadow:1px 1px black; " class="list-inline">
-                
-                <li  class="list-inline-item"><a title="Homepage" style="color: orange;" href="#home">Home</a></li>
-                <li class="list-inline-item"><a title="Email querys" style="color: orange;" href="mailto:andi56@hotmail.co.uk">Email</a></li>
-                <li class="list-inline-item"><a title="Websites Github code" style="color: orange;" href="https://github.com/Lucas-Uniqodo/Multiverse-Bootcamp-End-Project">Github</a></li>
-                <li class="list-inline-item"><a title="Help!!" style="color: orange;" href="https://www.google.com/">Help</a></li>
-                <li class="list-inline-item"><a style="color: orange;" href="https://www.google.com/search?q=cookies&bih=625&biw=1366&rlz=1C1ASVC_enGB948GB949&hl=en&ei=DJD-YLrYCuKh1fAPlae0iAI">Privacy & Cookies</a></li>
-            
-            </ul>
-            <br><p style="text-align: center; color: orange; text-shadow:1px 1px black; "> Omniverse E-commerce Shop © 2021</p>
-        </footer>
-</div>
-<script src="https://kit.fontawesome.com/cb279bfd62.js" crossorigin="anonymous"></script>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-  </body>
 </html>
 
 <script>
 	cartList = []
+	adminMode = false
 
 	function addToCart(id) {
+    
 		cartList.push(id)
-    console.log(id)
+		console.log(id)
         localStorage.setItem("cartList", JSON.stringify(cartList))
 		displayCart()
     }
@@ -191,14 +227,36 @@ p{
 		})
 	}
 
+	function changeAdminMode() {
+		if (adminMode == false) {
+			console.log("adminMode:on")
 
+			adminOptions = document.getElementsByClassName("adminOnly")
+			console.log(adminOptions)
+			adminOptions.forEach(button => {	
+				button.style = "visibility: visible;"
+			});
+
+		adminMode = true
+		} else {
+			console.log("adminMode:off")
+
+			adminOptions = document.getElementsByClassName("adminOnly")
+			adminOptions.forEach(button => {	
+			button.style = "visibility: hidden;"
+		});
+
+		adminMode = false
+		}
+	}
 
 // retrieving local storage
-		let cartListStorage = localStorage.getItem("cartList")
+	let cartListStorage = localStorage.getItem("cartList")
+	console.log(cartListStorage)
 
-		//if local storage is found, updates the task managers corresponding attributes and displays local storage's content
-		if(cartListStorage){
-			cartList = JSON.parse(cartListStorage)
-			displayCart()
-		} 
+	//if local storage is found, updates the corresponding attributes and displays local storage's content
+	if(cartListStorage){
+		cartList = JSON.parse(cartListStorage)
+		displayCart()
+	}
 </script>
