@@ -2,8 +2,7 @@
 	<h1 style="text-align: center;">{{category.name}}</h1>
 	<div class="row">
 		{{#each category.Items}}
-			<div id="item{{this.id}}" class="card col-md-3">
-
+			<div class="card col-md-3">
 				<img style=" width:38vh; height: 35vh;" src="{{this.image}}" class="card-img-top" alt="..."> 
 				<div class="card-body">
 					<h5 class="card-title">{{this.title}}</h5>
@@ -18,7 +17,6 @@
 				 </ul>
 
 
-    </div>
 
 				<div class="card-body">
 					<a
@@ -46,6 +44,7 @@
 				</div>
 			</div>
 		{{/each}}
+	</div>
 
 
 </div>
