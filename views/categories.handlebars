@@ -1,5 +1,17 @@
-<div class="category-header">
-  <h4>Omniverse</h4>
-  <h2>Categories</h2>
+<h2 style="text-align: center;">Categories</h2>
+
+<div class="container">
+  <div class="row">
+      {{#each categories}}   
+        <div  class="card col-md-3" style="width: 18rem; text-align:center">
+            <a href="/categories/{{this.id}}"><img src="{{this.categoryImage}}" class="card-img-top" alt="..."></a>
+            <div class="card-body">
+              <a href="/categories/{{this.id}}" class="card-text"><button style="border-style: groove; border-color:orange" class="btn warning">{{this.name}}</button></a>
+            </div>
+        </div>
+      {{/each}}
+  </div>
 </div>
+
+
 
