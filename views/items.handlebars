@@ -7,7 +7,8 @@
   <img style=" width:240px; height: 200px;" src="{{this.image}}" class="card-img-top" alt="..."> 
   <div class="card-body">
     <h5 class="card-title">{{this.title}}</h5>
-    <p class="card-text"><span class="collapse" id="more">{{this.description}}</span><span><a href="#more" data-toggle="collapse">Read description... <i class="fa fa-caret-down"></i></a></span></p>
+    <p class="card-text"><span class="collapse" id="more{{this.id}}">{{this.description}}</span>
+    <span><a href="#more{{this.id}}" data-toggle="collapse">Read description... <i class="fa fa-caret-down"></i></a></span></p>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">£{{this.price}}</li>
