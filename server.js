@@ -18,6 +18,7 @@ const handlebars = expressHandlebars({
 });
 
 app.engine("handlebars", handlebars);
+
 app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.static("views/images"));
@@ -81,24 +82,8 @@ app.get("/items/:id", async (request, response) => {
 });
 
 //extension admin stuff
-app.get("/adminform", async (request, response) => {
-	response.render("adminform", { detailsValid });
-});
-
-app.get("/admin", async (request, response) => {
-	const details = await Login.findOne({
-		where: {
-			username: request.body.username,
-			password: request.body.password,
-		},
-	});
-	const detailsValid = details ? true : false;
-
-	response.redirect("/admin"); //might not work, haven't tested yet
-});
-
 //create Item
-app.post("/item", async (request, response) => {
+app.get("/item/post", async (request, response) => {
 	const item = await Item.create({
 		title: request.body.title,
 		image: request.body.image,
@@ -111,7 +96,7 @@ app.post("/item", async (request, response) => {
 });
 
 //edit Item
-app.put("/item/:id", async (request, response) => {
+app.get("/item/:id/put", async (request, response) => {
 	const item = await Item.findByPk(request.params.id);
 	if (!item) {
 		return response.status(404).send("NOT FOUND");
@@ -134,7 +119,7 @@ app.put("/item/:id", async (request, response) => {
 });
 
 //delete item
-app.delete("/item/:id", async (request, response) => {
+app.get("/item/:id/delete", async (request, response) => {
 	const item = await Item.findByPk(request.params.id);
 	if (!item) {
 		return response.status(404).send("NOT FOUND");
