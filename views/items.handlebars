@@ -1,5 +1,14 @@
 <div class="container">
 	<h1 style="text-align: center;">{{category.name}}</h1>
+	<div class="adminOnly">
+		<a
+			href="/item/addform"
+			class="card-link"
+		><button
+				type="button"
+				class="btn btn-warning"
+			>Add</button></a>
+	</div>
 	<div class="row">
 		{{#each category.Items}}
 			<div class="card col-md-3">
@@ -44,7 +53,7 @@
 							>Delete</button></a>
 
 						<a
-							href="/item/{{this.id}}/put"
+							href="/item/{{this.id}}/updateform"
 							class="card-link"
 						><button
 								type="button"

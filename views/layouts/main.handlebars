@@ -245,7 +245,7 @@
 
 			adminOptions = document.getElementsByClassName("adminOnly")
 			console.log(adminOptions)
-			for (const button of adminOptions) {	
+			Array.from(adminOptions).forEach((button) => {	
 				button.style = "visibility: visible;"
 			});
 
@@ -255,8 +255,8 @@
 			console.log("adminMode:off")
 
 			adminOptions = document.getElementsByClassName("adminOnly")
-			adminOptions.forEach(button => {	
-			button.style = "visibility: hidden;"
+			Array.from(adminOptions).forEach((button) => {	
+				button.style = "visibility: hidden;"
 		});
 
 		adminMode = false
