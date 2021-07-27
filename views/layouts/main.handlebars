@@ -217,23 +217,16 @@
     }
 
 
-                                                                    <script>
-                                                                        cartList = []
-
-                                                                        function addToCart(id) {
-                                                                            cartList.push(id)
-                                                                            console.log(id)
-                                                                            localStorage.setItem("cartList", JSON.stringify(cartList))
-                                                                            displayCart()
-                                                                        }
-
-                                                                        function displayCart() {
-                                                                            document.getElementById("cartList").innerHTML = ""
-                                                                            cartList.forEach(cartItem => {
-                                                                                let listItem = document.createElement("li");
-                                                                                listItem.innerHTML = `<p
+function displayCart() {
+    document.getElementById("cartList").innerHTML = ""
+    cartList.forEach(cartItem => {
+        let listItem = document.createElement("li");
+        listItem.innerHTML = `<p
 							class="dropdown-item col"
 							>${cartItem}</p>`
+        document.getElementById("cartList").appendChild(listItem)
+    })
+}
 
 			document.getElementById("cartList").appendChild(listItem)
 		})
