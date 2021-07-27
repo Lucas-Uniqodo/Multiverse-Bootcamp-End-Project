@@ -1,10 +1,14 @@
-<div style="text-align: center;" class="container">
+<div style="text-align: center;">
 
-    <h1 style="text-shadow: 1px 1px orange;">Admin Page</h1> {{!--hello--}}
+    <h1 style="text-shadow: 1px 1px orange;">Admin Page</h1>
 
-    <h3 style="text-shadow: 1px 1px orange;">Add item</h3>
+
 
     <div style="text-shadow: 1px 1px black; color:orange" class="col-md-12">
+        <h3 style="text-shadow: 1px 1px orange;">Add item</h3>
+        <div class="row">
+        <div class="col-md-3"></div>
+        <div style="justify-content:center; text-shadow: 1px 1px black; color:orange" class="col-md-6 boxed">
         <div class="mb-3">
             <form action="/items" method="POST">
                 <label for="image" class="form-label">Item Image Link:</label>
@@ -22,6 +26,7 @@
                                 <div class="col">
                                     <label class="form-label" for="categoryId">Select Category:</label>
                                     <select id="categoryId" name="categoryId" class="form-select">
+
                                         <option value="1">Electronics</option>
                                         <option value="2">Jewellery</option>
                                         <option value="3">Men's Clothing</option>
@@ -33,8 +38,10 @@
                                 <br>
                                     <div class="d-grid gap-2 col-6 mx-auto">
                                         <input style="border-color:black;" class="btn btn-warning" type="submit" value="Submit">Submit</button>
+
                                     </div>
                                 </div>
+                                <div class="col-md-3"></div>
                             </div>
                         </div>
                     </div>
