@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<!--Bootstrap/CSS Links-->
 		<link rel="stylesheet" href="/style.css" />
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -23,6 +24,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Style CSS-->
 		<style>
 			body {font-family: Georgia, 'Times New Roman', Times, serif;}
 			.navbar-nav { justify-content: space-evenly; }
@@ -30,7 +32,7 @@
 	</head>
 
 	<body>
-
+		<!-- NAV Bar-->			
 		<nav
 			style="border-style: ridge; border-color: orange;"
 			class="navbar navbar-expand-lg navbar-light bg-light"
@@ -139,11 +141,13 @@
 				</div>
 			</div>
 		</nav>
-
+		<!-- Body of Page-->
 		<div class="container">
 			{{{body}}}
 		</div>
 
+		<!-- Footer -->
+        <br><br><br>
 		<div class="footer-basic">
 			<footer>
 				<div style="text-align: center; " class="social">
@@ -184,6 +188,7 @@
 					Omniverse E-commerce Shop © 2021</p>
 			</footer>
 		</div>
+		<!-- Bootstrap/JQuery/Icon Scripts-->
 		<script
 			src="https://kit.fontawesome.com/cb279bfd62.js"
 			crossorigin="anonymous"
@@ -203,12 +208,13 @@
 	</body>
 
 </html>
-
+<!-- Cart Functions-->
 <script>
 	cartList = []
 	adminMode = false
 
-	function addToCart(id) {
+	//Pushes Items to List
+	function addToCart(id) { 
     
 		cartList.push(id)
 		console.log(id)
@@ -216,22 +222,22 @@
 		displayCart()
     }
 
-
-function displayCart() {
-    document.getElementById("cartList").innerHTML = ""
-    cartList.forEach(cartItem => {
-        let listItem = document.createElement("li");
-        listItem.innerHTML = `<p
-							class="dropdown-item col"
-							>${cartItem}</p>`
-        document.getElementById("cartList").appendChild(listItem)
-    })
-}
-
+	// Creates/Displays List of Items in Cart
+	function displayCart() {            
+		document.getElementById("cartList").innerHTML = ""
+		cartList.forEach(cartItem => {
+			let listItem = document.createElement("li");
+			listItem.innerHTML = `<p
+								class="dropdown-item col"
+								>${cartItem}</p>`
 			document.getElementById("cartList").appendChild(listItem)
-		})
-	}
+		})}
+		
 
+				document.getElementById("cartList").appendChild(listItem)
+			})
+		}
+    // Changes UI to display admin features
 	function changeAdminMode() {
 		if (adminMode == false) {
 			console.log("adminMode:on")
