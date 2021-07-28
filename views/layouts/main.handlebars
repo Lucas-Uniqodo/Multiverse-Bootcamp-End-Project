@@ -216,22 +216,19 @@
 
 	//Pushes Items to List
 	function addToCart(item) {
-		newQuantity = Number(document.getElementById("quantity"+item.id).value)
-		//console.log(newQuantity)
+		quantity = Number(document.getElementById("quantity"+item.id).value)
 		if (cartList.has(item.id)) {
-			storedQuantity = item.quantity
-			console.log(item.quantity)
-			totalQuantity = Number(storedQuantity) + Number(newQuantity)
 
-			item.quantity = totalQuantity
+			let previousQuantity = cartList.get(item.id).quantity
+			let newQuantity = previousQuantity + quantity
+			item.quantity = newQuantity
+
 		} else {
-			item.quantity = parseInt(newQuantity)
+			item.quantity = parseInt(quantity)
 		}
-		//console.log("stored quantity: "+ item.quantity+ "\nadded quantity: "+newQuantity)
-		cartList.set(item.id, item)
 
+		cartList.set(item.id, item)
         localStorage.setItem("cartList", JSON.stringify(Array.from(cartList.entries())))
-		displayCart()
     }
 
 	function deleteFromCart(id) {
@@ -247,24 +244,23 @@
 		let numberOfItems = 0
 
 		for (let [key, cartItem] of cartList) {
-			console.log(itemTotal, cartItem.price);
-			itemTotal += cartItem.price;
-			numberOfItems ++;
+			itemTotal += cartItem.price * cartItem.quantity;
+			numberOfItems += cartItem.quantity;
 			let listItem = document.createElement("div");
 			listItem.innerHTML = `<div class="row main align-items-center">
                     <div class="col-2"><img class="img-fluid" src="${cartItem.image}"></div>
                     <div class="col">
                         <div class="row">${cartItem.title}</div>
                     </div>
-                    <div class="col">&pound; ${cartItem.price} <span onclick="deleteFromCart(${cartItem.id});" class="close">&#10005;</span></div> 
+                    <div class="col">&pound; ${cartItem.price} <span>quantity: ${cartItem.quantity}</span> <span onclick="deleteFromCart(${cartItem.id});" class="close">&#10005;</span></div> 
                 </div>`
 			document.getElementById("cartList").appendChild(listItem)
 		}
 
 		document.getElementById("numItems").innerText = numberOfItems + " Items";
 		document.getElementById("itemTotal").innerText = "£" + itemTotal;
-		let shippingTotal = itemTotal + parseFloat(document.getElementById("shippingPrice").value);
-		document.getElementById("totalPrice").innerText = "£" + shippingTotal;
+
+		document.getElementById("totalPrice").innerText = "£" + (itemTotal + parseFloat(document.getElementById("shippingPrice").value));
 
 	}
 
