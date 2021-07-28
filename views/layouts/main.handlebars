@@ -234,6 +234,11 @@
 		displayCart()
     }
 
+	function deleteFromCart(id) {
+		cartList.delete(id)
+        localStorage.setItem("cartList", JSON.stringify(Array.from(cartList.entries())))
+		displayCart()
+	}
 
   	// Creates/Displays List of Items in Cart
 	function displayCart() {
@@ -251,7 +256,7 @@
                     <div class="col">
                         <div class="row">${cartItem.title}</div>
                     </div>
-                    <div class="col">&pound; ${cartItem.price} <span class="close">&#10005;</span></div> 
+                    <div class="col">&pound; ${cartItem.price} <span onclick="deleteFromCart(${cartItem.id});" class="close">&#10005;</span></div> 
                 </div>`
 			document.getElementById("cartList").appendChild(listItem)
 		}
