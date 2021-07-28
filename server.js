@@ -74,7 +74,7 @@ app.get("/categories", async (request, response) => {
 });
 
 app.get("/cart", async (request, response) => {
-	response.render("testCart");
+	response.render("cart");
 });
 
 app.get("/categories/:id", async (request, response) => {
