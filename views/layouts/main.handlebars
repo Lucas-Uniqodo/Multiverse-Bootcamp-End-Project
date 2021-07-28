@@ -205,31 +205,39 @@
 </html>
 
 <script>
-	cartList = []
-	adminMode = false
+	let cartList = new Map()
+	let adminMode = false
 
-	function addToCart(id) {
-    
-		cartList.push(id)
-		console.log(id)
-        localStorage.setItem("cartList", JSON.stringify(cartList))
+	function addToCart(item) {
+		quantity = document.getElementById("quantity"+item.id).value
+		if (cartList.has(item.id)) {
+			item["quantity"] = parseInt(item["quantity"]) + parseInt(quantity)
+		} else {
+			item["quantity"] = parseInt(quantity)
+		}
+		console.log(item["quantity"], parseInt(quantity))
+		cartList.set(item.id, item)
+
+		console.log(quantity)
+        localStorage.setItem("cartList", JSON.stringify(Array.from(cartList.entries())))
 		displayCart()
     }
 
+	{{!-- localStorage.myMap = JSON.stringify(Array.from(map.entries()));
 
-function displayCart() {
-    document.getElementById("cartList").innerHTML = ""
-    cartList.forEach(cartItem => {
-        let listItem = document.createElement("li");
-        listItem.innerHTML = `<p
-							class="dropdown-item col"
-							>${cartItem}</p>`
-        document.getElementById("cartList").appendChild(listItem)
-    })
-}
+	map = new Map(JSON.parse(localStorage.myMap)); --}}
 
+
+	function displayCart() {
+		document.getElementById("cartList").innerHTML = ""
+
+		for (let [key, cartItem] of cartList) {
+			let listItem = document.createElement("li");
+			listItem.innerHTML = `<p
+								class="dropdown-item col"
+								>${cartItem.title} ${cartItem.price} ${cartItem.quantity}</p>`
 			document.getElementById("cartList").appendChild(listItem)
-		})
+		}
 	}
 
 	function changeAdminMode() {
@@ -257,13 +265,13 @@ function displayCart() {
 	}
 
 
-// retrieving local storage
-	let cartListStorage = localStorage.getItem("cartList")
+	// retrieving local storage
+	let cartListStorage = new Map(JSON.parse(localStorage.getItem("cartList")));
 	console.log(cartListStorage)
 
 	//if local storage is found, updates the corresponding attributes and displays local storage's content
 	if(cartListStorage){
-		cartList = JSON.parse(cartListStorage)
+		cartList = cartListStorage
 		displayCart()
 	}
 </script>

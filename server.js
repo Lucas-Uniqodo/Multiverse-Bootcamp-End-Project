@@ -12,12 +12,21 @@ const Category = require("./models/Category");
 const app = express();
 const port = 3000;
 
-// setup our templating engine
-const handlebars = expressHandlebars({
+var hbs = expressHandlebars.create({
+	helpers: {
+		json: function (value, options) {
+			return JSON.stringify(value);
+		},
+	},
 	handlebars: allowInsecurePrototypeAccess(Handlebars),
 });
 
-app.engine("handlebars", handlebars);
+// setup our templating engine
+// const handlebars = expressHandlebars({
+// 	handlebars: allowInsecurePrototypeAccess(Handlebars),
+// });
+
+app.engine("handlebars", hbs.engine);
 
 app.set("view engine", "handlebars");
 app.use(express.json());
@@ -65,7 +74,7 @@ app.get("/categories", async (request, response) => {
 });
 
 app.get("/cart", async (request, response) => {
-	response.render("cart");
+	response.render("testCart");
 });
 
 app.get("/categories/:id", async (request, response) => {
@@ -92,8 +101,8 @@ app.post("/items", async (request, response) => {
 
 //edit Item
 app.get("/updateForm/:id", async (request, response) => {
-	id = request.params.id;
-	response.render("updateForm", { id });
+	const item = await Item.findByPk(request.params.id);
+	response.render("updateForm", { item });
 });
 
 app.get("/item/:id/put", async (request, response) => {
@@ -107,7 +116,7 @@ app.get("/item/:id/put", async (request, response) => {
 			title: request.body.title,
 			image: request.body.image,
 			price: request.body.price,
-			categoryId: request.body.categoryId,
+			CategoryId: request.body.categoryId,
 			description: request.body.description,
 		},
 		{
@@ -128,7 +137,7 @@ app.get("/item/:id/delete", async (request, response) => {
 		where: { id: request.params.id },
 	});
 
-	response.redirect("/home");
+	response.redirect("/categories/" + item.CategoryId);
 });
 
 app.listen(port, () => {

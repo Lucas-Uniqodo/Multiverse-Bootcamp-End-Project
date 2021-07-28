@@ -1,10 +1,7 @@
 <div class="container">
 	<h1 style="text-align: center;">{{category.name}}</h1>
-	<div class="adminOnly">
-		<a
-			href="/addform"
-			class="card-link"
-		><button
+	<div class="adminOnly" style="visibility: hidden;">
+		<a href="/addform" class="card-link"><button
 				type="button"
 				class="btn btn-warning"
 			>Add</button></a>
@@ -34,16 +31,16 @@
 					<li class="list-group-item">{{category.name}}</li>
 					<li class="list-group-item">£{{this.price}}</li>
 					<li class="list-group-item">Select Quantity:
-						<input type="number" value="1" min="1" max="999" /></li>
+						<input id="quantity{{this.id}}" type="number" value="1" min="1" max="999" /></li>
 				</ul>
 
 				<div class="card-body">
 					<a
-						onclick="addToCart({{this.id}})"
+						onclick="addToCart({{json this}})"
 						href="#"
 						class="card-link"
 					><button type="button" class="btn btn-warning">Add to Cart</button></a>
-					<div class="adminOnly">
+					<div class="adminOnly" style="visibility: hidden;">
 						<a
 							href="/item/{{this.id}}/delete"
 							class="card-link"
@@ -65,6 +62,4 @@
 		{{/each}}
 	</div>
 
-
-
-    </div>
+</div>
