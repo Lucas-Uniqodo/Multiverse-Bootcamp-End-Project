@@ -4,7 +4,8 @@
   "description": "Project aim:\r   To create an e-commerce site that allows an end user to browse through a range of categories and products, which can be added to a basket.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:report": "jest --coverage=true"
   },
   "repository": {
     "type": "git",
