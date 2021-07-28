@@ -1,11 +1,15 @@
 <div class="container">
 	<h1 style="text-align: center;">{{category.name}}</h1>
+
+	 <!--Bootstrap card looping for every item in that category from database-->
+
 	<div class="adminOnly" style="visibility: hidden;">
 		<a href="/addform" class="card-link"><button
 				type="button"
 				class="btn btn-warning"
 			>Add</button></a>
 	</div>
+
 	<div class="row">
 		{{#each category.Items}}
 			<div class="card col-md-3">
@@ -40,7 +44,12 @@
 						href="#"
 						class="card-link"
 					><button type="button" class="btn btn-warning">Add to Cart</button></a>
+
+					 <!--Admin buttons to Delete/Update items in category-->
+
+
 					<div class="adminOnly" style="visibility: hidden;">
+
 						<a
 							href="/item/{{this.id}}/delete"
 							class="card-link"
