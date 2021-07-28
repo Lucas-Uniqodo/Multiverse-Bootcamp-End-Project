@@ -216,23 +216,24 @@
 
 	//Pushes Items to List
 	function addToCart(item) {
-		quantity = document.getElementById("quantity"+item.id).value
+		newQuantity = Number(document.getElementById("quantity"+item.id).value)
+		//console.log(newQuantity)
 		if (cartList.has(item.id)) {
-			item["quantity"] = parseInt(item["quantity"]) + parseInt(quantity)
+			storedQuantity = item.quantity
+			console.log(item.quantity)
+			totalQuantity = Number(storedQuantity) + Number(newQuantity)
+
+			item.quantity = totalQuantity
 		} else {
-			item["quantity"] = parseInt(quantity)
+			item.quantity = parseInt(newQuantity)
 		}
-		console.log(item["quantity"], parseInt(quantity))
+		//console.log("stored quantity: "+ item.quantity+ "\nadded quantity: "+newQuantity)
 		cartList.set(item.id, item)
 
-		console.log(quantity)
         localStorage.setItem("cartList", JSON.stringify(Array.from(cartList.entries())))
 		displayCart()
     }
 
-	{{!-- localStorage.myMap = JSON.stringify(Array.from(map.entries()));
-
-	map = new Map(JSON.parse(localStorage.myMap)); --}}
 
   	// Creates/Displays List of Items in Cart
 	function displayCart() {

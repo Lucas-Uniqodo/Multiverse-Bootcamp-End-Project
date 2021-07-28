@@ -105,12 +105,13 @@ app.get("/updateForm/:id", async (request, response) => {
 	response.render("updateForm", { item });
 });
 
-app.get("/item/:id/put", async (request, response) => {
+app.post("/item/:id/put", async (request, response) => {
 	const item = await Item.findByPk(request.params.id);
 	if (!item) {
 		return response.status(404).send("NOT FOUND");
 	}
 
+	console.log(request.body);
 	await Item.update(
 		{
 			title: request.body.title,
@@ -124,6 +125,7 @@ app.get("/item/:id/put", async (request, response) => {
 		}
 	);
 
+	console.log("update complete");
 	response.redirect("/categories/" + item.CategoryId); //might not work, haven't tested yet
 });
 
