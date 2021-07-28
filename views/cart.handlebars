@@ -7,19 +7,15 @@
                     <div class="col">
                         <h4><b>Shopping Cart</b></h4> {{!--Header for card--}}
                     </div>
-                    <div class="col align-self-center text-right text-muted">3 items</div>
+                    <div class="col align-self-center text-right text-muted" id="numItems">3 items</div>
                 </div>
             </div>
-            <div class="row border-top border-bottom"> {{!--This div is where the items are added and adds dividers for each item--}}
-                <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div> {{!--Image of item--}}
-                    <div class="col">
-                        <div class="row text-muted">Shirt</div> {{!--Item type--}}
-                        <div class="row">Cotton T-shirt</div> {{!--Item Name--}}
-                    </div>
-                    <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div> {{!--Quantity box--}}
-                    <div class="col">&pound; 44.00 <span class="close">&#10005;</span></div> {{!--Price and delete icon--}}
-                </div>
+            <div class="row border-top border-bottom" id="cartList"> {{!--This div is where the items are added and adds dividers for each item--}}
+                
+                {{!--item divs here--}}
+
+                
+
             </div>
 
             <div class="back-to-shop"><a href="/home">&leftarrow;</a><span class="text-muted">Back to shop</span></div> {{!--Arrow button at bottom takes you back home--}}
@@ -30,18 +26,18 @@
             </div>
             <hr>
             <div class="row"> {{!--Has CSS that adds dividers--}}
-                <div class="col" style="padding-left:0;">ITEMS 3</div> {{!--Should pull amount of items and displaya amount as well as their prices--}}
-                <div class="col text-right">&pound; 132.00</div> {{!--Hard-coded prices--}}
+                <div class="col" style="padding-left:0;">ITEMS</div> {{!--Should pull amount of items and displaya amount as well as their prices--}}
+                <div class="col text-right" id="itemTotal">&pound; 132.00</div> {{!--Hard-coded prices--}}
             </div>
             <form> {{!--Delivery drop down--}}
-                <p>SHIPPING</p> <select> 
-                    <option class="text-muted">Standard Delivery - &pound;2.50</option>
-                    <option class="text-muted">Next Day Delivery - &pound;5.00</option>
+                <p>SHIPPING</p> <select id="shippingPrice"> 
+                    <option class="text-muted" value="2.50" onclick="displayCart()">Standard Delivery - &pound;2.50</option>
+                    <option class="text-muted" value="5.00" onclick="displayCart()">Next Day Delivery - &pound;5.00</option>
                 </select>
             </form>
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;"> {{!--this div should total the items as well as selected delivery option price--}}
                 <div class="col">TOTAL PRICE</div>
-                <div class="col text-right">&pound; 137.00</div>
+                <div class="col text-right" id="totalPrice">&pound; 137.00</div>
             </div> <button class="btn">CHECKOUT</button> {{!--Just for looks--}}
         </div>
     </div>

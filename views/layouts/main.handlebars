@@ -38,7 +38,7 @@
 			class="navbar navbar-expand-lg navbar-light bg-light"
 		>
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#"><i
+				<a class="navbar-brand" href="/home"><i
 						style="color: orange; font-size:4vh"
 						class="fas fa-globe"
 					></i>MNIVERSE</a>
@@ -151,7 +151,7 @@
 		<div class="footer-basic">
 			<footer>
 				<div style="text-align: center; " class="social">
-					<a style="color: orange;" href=""><i
+					<a style="color: orange;" href="/home"><i
 							style="color: orange; font-size:4vh"
 							class="fas fa-globe"
 						></i>mniverse</a>
@@ -210,29 +210,58 @@
 </html>
 <!-- Cart Functions-->
 <script>
-	cartList = []
-	adminMode = false
+	let cartList = new Map()
+	let adminMode = false
+
 
 	//Pushes Items to List
-	function addToCart(id) { 
-    
-		cartList.push(id)
-		console.log(id)
-        localStorage.setItem("cartList", JSON.stringify(cartList))
+	function addToCart(item) {
+		quantity = document.getElementById("quantity"+item.id).value
+		if (cartList.has(item.id)) {
+			item["quantity"] = parseInt(item["quantity"]) + parseInt(quantity)
+		} else {
+			item["quantity"] = parseInt(quantity)
+		}
+		console.log(item["quantity"], parseInt(quantity))
+		cartList.set(item.id, item)
+
+		console.log(quantity)
+        localStorage.setItem("cartList", JSON.stringify(Array.from(cartList.entries())))
 		displayCart()
     }
 
-	// Creates/Displays List of Items in Cart
-	function displayCart() {            
+	{{!-- localStorage.myMap = JSON.stringify(Array.from(map.entries()));
+
+	map = new Map(JSON.parse(localStorage.myMap)); --}}
+
+  	// Creates/Displays List of Items in Cart
+	function displayCart() {
 		document.getElementById("cartList").innerHTML = ""
-		cartList.forEach(cartItem => {
-			let listItem = document.createElement("li");
-			listItem.innerHTML = `<p
-								class="dropdown-item col"
-								>${cartItem}</p>`
+		let itemTotal = 0
+		let numberOfItems = 0
+
+		for (let [key, cartItem] of cartList) {
+			console.log(itemTotal, cartItem.price);
+			itemTotal += cartItem.price;
+			numberOfItems ++;
+			let listItem = document.createElement("div");
+			listItem.innerHTML = `<div class="row main align-items-center">
+                    <div class="col-2"><img class="img-fluid" src="${cartItem.image}"></div>
+                    <div class="col">
+                        <div class="row">${cartItem.title}</div>
+                    </div>
+                    <div class="col">&pound; ${cartItem.price} <span class="close">&#10005;</span></div> 
+                </div>`
 			document.getElementById("cartList").appendChild(listItem)
-		})}
-		
+		}
+
+		document.getElementById("numItems").innerText = numberOfItems + " Items";
+		document.getElementById("itemTotal").innerText = "£" + itemTotal;
+		let shippingTotal = itemTotal + parseFloat(document.getElementById("shippingPrice").value);
+		document.getElementById("totalPrice").innerText = "£" + shippingTotal;
+
+	}
+
 
 				document.getElementById("cartList").appendChild(listItem)
 			})
@@ -244,7 +273,7 @@
 
 			adminOptions = document.getElementsByClassName("adminOnly")
 			console.log(adminOptions)
-			for (const button of adminOptions) {	
+			Array.from(adminOptions).forEach((button) => {	
 				button.style = "visibility: visible;"
 			});
 
@@ -254,8 +283,8 @@
 			console.log("adminMode:off")
 
 			adminOptions = document.getElementsByClassName("adminOnly")
-			adminOptions.forEach(button => {	
-			button.style = "visibility: hidden;"
+			Array.from(adminOptions).forEach((button) => {	
+				button.style = "visibility: hidden;"
 		});
 
 		adminMode = false
@@ -263,13 +292,13 @@
 	}
 
 
-// retrieving local storage
-	let cartListStorage = localStorage.getItem("cartList")
+	// retrieving local storage
+	let cartListStorage = new Map(JSON.parse(localStorage.getItem("cartList")));
 	console.log(cartListStorage)
 
 	//if local storage is found, updates the corresponding attributes and displays local storage's content
 	if(cartListStorage){
-		cartList = JSON.parse(cartListStorage)
+		cartList = cartListStorage
 		displayCart()
 	}
 </script>
