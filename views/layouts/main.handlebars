@@ -230,15 +230,31 @@
 
 	function displayCart() {
 		document.getElementById("cartList").innerHTML = ""
+		let itemTotal = 0
+		let numberOfItems = 0
 
 		for (let [key, cartItem] of cartList) {
-			let listItem = document.createElement("li");
-			listItem.innerHTML = `<p
-								class="dropdown-item col"
-								>${cartItem.title} ${cartItem.price} ${cartItem.quantity}</p>`
+			console.log(itemTotal, cartItem.price);
+			itemTotal += cartItem.price;
+			numberOfItems ++;
+			let listItem = document.createElement("div");
+			listItem.innerHTML = `<div class="row main align-items-center">
+                    <div class="col-2"><img class="img-fluid" src="${cartItem.image}"></div>
+                    <div class="col">
+                        <div class="row">${cartItem.title}</div>
+                    </div>
+                    <div class="col">&pound; ${cartItem.price} <span class="close">&#10005;</span></div> 
+                </div>`
 			document.getElementById("cartList").appendChild(listItem)
 		}
+
+		document.getElementById("numItems").innerText = numberOfItems + " Items";
+		document.getElementById("itemTotal").innerText = "£" + itemTotal;
+		let shippingTotal = itemTotal + parseFloat(document.getElementById("shippingPrice").value);
+		document.getElementById("totalPrice").innerText = "£" + shippingTotal;
+
 	}
+	
 
 	function changeAdminMode() {
 		if (adminMode == false) {
