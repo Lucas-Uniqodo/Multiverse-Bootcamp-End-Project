@@ -28,15 +28,15 @@
                 <div class="col text-right" id="itemTotal">&pound; 132.00</div> {{!--Hard-coded prices--}}
             </div>
             <form> {{!--Delivery drop down--}}
-                <p>SHIPPING</p> <select id="shippingPrice"> 
-                    <option class="text-muted" value="2.50" onclick="displayCart()">Standard Delivery - &pound;2.50</option>
-                    <option class="text-muted" value="5.00" onclick="displayCart()">Next Day Delivery - &pound;5.00</option>
+                <p>SHIPPING</p> <select id="shippingPrice" onclick="displayCart()"> 
+                    <option class="text-muted" value="2.50" >Standard Delivery - &pound;2.50</option>
+                    <option class="text-muted" value="5.00" >Next Day Delivery - &pound;5.00</option>
                 </select>
             </form>
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;"> {{!--this div should total the items as well as selected delivery option price--}}
                 <div class="col">TOTAL PRICE</div>
                 <div class="col text-right" id="totalPrice">&pound; 137.00</div>
-            </div> <button style="background-color: orange;" class="btn">CHECKOUT</button> {{!--Just for looks--}}
+            </div> <a href="https://design-system.service.gov.uk/patterns/bank-details/"><button style="background-color: orange;" class="btn">CHECKOUT</button></a>{{!--Just for looks--}}
         </div>
     </div>
 </div>

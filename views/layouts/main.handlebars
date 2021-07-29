@@ -28,9 +28,7 @@
 		<style>
 			body {font-family: Georgia, 'Times New Roman', Times, serif;}
 			.navbar-nav { justify-content: space-evenly; }
-			#delButton {float: right;}
-			#updButton{float: right;}
-			#addCart{float:right;}
+			
 		</style>
 	</head>
 
@@ -244,7 +242,7 @@
                     <div class="col">
                         <div class="row">${cartItem.title}</div>
                     </div>
-                    <div class="col">&pound; ${cartItem.price} <span>quantity: ${cartItem.quantity}</span> <span onclick="deleteFromCart(${cartItem.id});" class="close">&#10005;</span></div> 
+                    <div class="col">&pound; ${cartItem.price} <br> <span>Quantity: ${cartItem.quantity}</span> <span onclick="deleteFromCart(${cartItem.id});" class="close">&#10005;</span></div> 
                 </div>`
 			document.getElementById("cartList").appendChild(listItem)
 		}
