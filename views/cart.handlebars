@@ -1,77 +1,78 @@
-
+{{! Refers to the whole box}}
 <div class="cartCard">
-    <div class="row">
-        <div class="col-md-8 cart">
-            <div class="title">
-                <div class="row">
-                    <div class="col">
-                        <h4><b>Shopping Cart</b></h4>
-                    </div>
-                    <div class="col align-self-center text-right text-muted">3 items</div>
-                </div>
-            </div>
-            <div class="row border-top border-bottom">
-                <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
-                    <div class="col">
-                        <div class="row text-muted">Shirt</div>
-                        <div class="row">Cotton T-shirt</div>
-                    </div>
-                    <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
-                    <div class="col">&pound; 44.00 <span class="close">&#10005;</span></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"></div>
-                    <div class="col">
-                        <div class="row text-muted">Shirt</div>
-                        <div class="row">Cotton T-shirt</div>
-                    </div>
-                    <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
-                    <div class="col">&pound; 44.00 <span class="close">&#10005;</span></div>
-                </div>
-            </div>
-            <div class="row border-top border-bottom">
-                <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg"></div>
-                    <div class="col">
-                        <div class="row text-muted">Shirt</div>
-                        <div class="row">Cotton T-shirt</div>
-                    </div>
-                    <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
-                    <div class="col">&pound; 44.00 <span class="close">&#10005;</span></div>
-                </div>
-            </div>
-            <div class="back-to-shop"><a href="/home">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
-        </div>
-        <div class="col-md-4 summary">
-            <div>
-                <h5><b>Summary</b></h5>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col" style="padding-left:0;">ITEMS 3</div>
-                <div class="col text-right">&pound; 132.00</div>
-            </div>
-            <form>
-                <p>SHIPPING</p> <select>
-                    <option class="text-muted">Standard Delivery - &pound;2.50</option>
-                    <option class="text-muted">Next Day Delivery - &pound;5.00</option>
-                </select>
-            </form>
-            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                <div class="col">TOTAL PRICE</div>
-                <div class="col text-right">&pound; 137.00</div>
-            </div> <button class="btn">CHECKOUT</button>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-md-8 cart">
+			<div class="title">
+				<div class="row">
+					<div class="col">
+                        {{!Header for card}}
+						<h4><b>Shopping Cart</b></h4>
+					</div>
+                    {{!Displays number of items}}
+					<div
+						class="col align-self-center text-right text-muted"
+						id="numItems"
+					>0 items</div>
+				</div>
+			</div>
+			<div class="row border-top border-bottom" id="cartList">
+				{{!This div is where the items are added and adds dividers for each item}}
+
+				{{!item divs here}}
+
+			</div>
+
+            {{!Arrow button at bottom takes you back home}}
+			<div class="back-to-shop"><a href="/home">&leftarrow;</a><a
+					href="/home"
+					class="text-muted"
+				>Back to shop</a></div>
+		</div>
+        {{!Right box stuff}}
+		<div class="col-md-4 summary">
+			<div>
+				<h5><b>Summary</b></h5>
+			</div>
+			<hr />
+			<div class="row">
+				{{!Has CSS that adds dividers}}
+				<div class="col" style="padding-left:0;">ITEMS</div>
+				{{!Total Price of items}}
+				<div class="col text-right" id="itemTotal">&pound; 00.00</div>
+			</div>
+			<form>
+				{{!Delivery drop down}}
+				<p>SHIPPING</p>
+				<select id="shippingPrice" onclick="displayCart()">
+					<option
+						class="text-muted"
+						value="2.50"
+					>Standard Delivery - &pound;2.50</option>
+					<option
+						class="text-muted"
+						value="5.00"
+					>Next Day Delivery - &pound;5.00</option>
+				</select>
+			</form>
+			<div
+				class="row"
+				style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;"
+			>
+				{{!Total price of items + delivery}}
+				<div class="col">TOTAL PRICE</div>
+				<div class="col text-right" id="totalPrice">&pound; 00.00</div>
+			</div>
+
+            {{!Just for looks}}
+			<button class="btn">CHECKOUT</button>
+		</div>
+	</div>
 </div>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<style>
+<style> 
+/* CSS for the shopping cart card*/
+
     .title {
     margin-bottom: 5vh
 }
@@ -242,4 +243,6 @@ a:hover {
 
 </style>
 
-
+{{!-- <script>
+    displayCart()
+</script> --}}
