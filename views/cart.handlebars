@@ -1,72 +1,44 @@
-{{! Refers to the whole box}}
-<div class="cartCard">
-	<div class="row">
-		<div class="col-md-8 cart">
-			<div class="title">
-				<div class="row">
-					<div class="col">
-                        {{!Header for card}}
-						<h4><b>Shopping Cart</b></h4>
-					</div>
-                    {{!Displays number of items}}
-					<div
-						class="col align-self-center text-right text-muted"
-						id="numItems"
-					>0 items</div>
-				</div>
-			</div>
-			<div class="row border-top border-bottom" id="cartList">
-				{{!This div is where the items are added and adds dividers for each item}}
 
-				{{!item divs here}}
+<div class="cartCard"> {{!-- Refers to the whole box--}}
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col">
+                        <h4 style="text-shadow: 1px 1px black; color:orange"><b>Shopping Cart</b></h4> {{!--Header for card--}}
+                    </div>
+                    <div class="col align-self-center text-right text-muted" id="numItems"> items</div>
+                </div>
+            </div>
+            <div class="row border-top border-bottom" id="cartList"> {{!--This div is where the items are added and adds dividers for each item--}}
+                
+                {{!--item divs here--}}
 
-			</div>
+            </div>
 
-            {{!Arrow button at bottom takes you back home}}
-			<div class="back-to-shop"><a href="/home">&leftarrow;</a><a
-					href="/home"
-					class="text-muted"
-				>Back to shop</a></div>
-		</div>
-        {{!Right box stuff}}
-		<div class="col-md-4 summary">
-			<div>
-				<h5><b>Summary</b></h5>
-			</div>
-			<hr />
-			<div class="row">
-				{{!Has CSS that adds dividers}}
-				<div class="col" style="padding-left:0;">ITEMS</div>
-				{{!Total Price of items}}
-				<div class="col text-right" id="itemTotal">&pound; 00.00</div>
-			</div>
-			<form>
-				{{!Delivery drop down}}
-				<p>SHIPPING</p>
-				<select id="shippingPrice" onclick="displayCart()">
-					<option
-						class="text-muted"
-						value="2.50"
-					>Standard Delivery - &pound;2.50</option>
-					<option
-						class="text-muted"
-						value="5.00"
-					>Next Day Delivery - &pound;5.00</option>
-				</select>
-			</form>
-			<div
-				class="row"
-				style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;"
-			>
-				{{!Total price of items + delivery}}
-				<div class="col">TOTAL PRICE</div>
-				<div class="col text-right" id="totalPrice">&pound; 00.00</div>
-			</div>
-
-            {{!Just for looks}}
-			<button class="btn">CHECKOUT</button>
-		</div>
-	</div>
+            <div class="back-to-shop"><a href="/categories">&leftarrow; <span style="" class="text-muted">Back to shop</span></a></div> {{!--Arrow button at bottom takes you back home--}}
+        </div>
+        <div class="col-md-4 summary"> {{!--Right box stuff--}}
+            <div>
+                <h5><b>Summary</b></h5> {{!--Title for right section (for total prices etc)--}}
+            </div>
+            <hr>
+            <div class="row"> {{!--Has CSS that adds dividers--}}
+                <div class="col" style="padding-left:0;">ITEMS</div> {{!--Should pull amount of items and displaya amount as well as their prices--}}
+                <div class="col text-right" id="itemTotal">&pound; 132.00</div> {{!--Hard-coded prices--}}
+            </div>
+            <form> {{!--Delivery drop down--}}
+                <p>SHIPPING</p> <select id="shippingPrice"> 
+                    <option class="text-muted" value="2.50" onclick="displayCart()">Standard Delivery - &pound;2.50</option>
+                    <option class="text-muted" value="5.00" onclick="displayCart()">Next Day Delivery - &pound;5.00</option>
+                </select>
+            </form>
+            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;"> {{!--this div should total the items as well as selected delivery option price--}}
+                <div class="col">TOTAL PRICE</div>
+                <div class="col text-right" id="totalPrice">&pound; 137.00</div>
+            </div> <button style="background-color: orange;" class="btn">CHECKOUT</button> {{!--Just for looks--}}
+        </div>
+    </div>
 </div>
 
 
@@ -243,6 +215,4 @@ a:hover {
 
 </style>
 
-{{!-- <script>
-    displayCart()
-</script> --}}
+
