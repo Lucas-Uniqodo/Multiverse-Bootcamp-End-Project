@@ -8,19 +8,19 @@ class Category {
     array items
 }
 
-class Electronics {
+object Electronics {
 
 }
 
-class Mens {
+object Mens {
   
 }
 
-class Womens {
+object Womens {
 
 }
 
-class Jewelery {
+object Jewelery {
 
 }
 
@@ -30,7 +30,7 @@ class Item {
   description
 }
 
-class Cart {
+object Cart {
   Array items
   AddToCart()
     Checkout()
@@ -39,10 +39,8 @@ class Cart {
 
  
 Cart "0..*" -- "many" Item
-Category "1" -- "many" Item
-Category "1" -- "many" Item
-Category "1" -- "many" Item
-Category "1" -- "many" Item  
+Item "many" -- "1" Category
+
 Category <|-- Electronics
 Category <|-- Mens
 Category <|-- Womens
