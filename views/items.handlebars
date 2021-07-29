@@ -4,18 +4,18 @@
 
 	 <!--Bootstrap card looping for every item in that category from database-->
 
-	<div class="adminOnly" style="visibility: hidden;">
+	<div class="adminOnly" style="justify-content: center; visibility: hidden;">
 		<a href="/addform" class="card-link"><button
 				type="button"
 				class="btn btn-warning"
-			>Add</button></a>
+			>Add!</button></a>
 	</div>
 
 	<div class="row">
 		{{#each category.Items}}
 			<div class="card col-md-3">
 				<img
-					style=" width:38vh; height: 35vh;"
+					style=" width:18vw; height: 15vw;"
 					src="{{this.image}}"
 					class="card-img-top"
 					alt="..."
@@ -40,34 +40,39 @@
 				</ul>
 
 				<div class="card-body">
+					<div class="btn-group" role="group" aria-label="Basic outlined example">
 					<a
 						onclick="addToCart({{json this}})"
 						href="#"
 						class="card-link"
-					><button type="button" class="btn btn-warning">Add to Cart</button></a>
-
-					 <!--Admin buttons to Delete/Update items in category-->
-
-
-					<div class="adminOnly" style="visibility: hidden;">
+					><button id="addCart" title="Add to Cart" type="button" class="btn btn-warning btn-outline-warning"><i style="color:darkorange;" class="fas fa-cart-plus"></i></button></a>
+		
+					 <!--Admin buttons to Delete/Update items in category-->	
+				
+				<div class="adminOnly" style="visibility: hidden;">
 
 						<a
 							href="/item/{{this.id}}/delete"
 							class="card-link"
 						><button
+								title="Delete Item"
+						        id="delButton"
 								type="button"
-								class="btn btn-warning"
-							>Delete</button></a>
+								class="btn btn-dark btn-outline-dark"
+							><i  style="color: rgb(196, 41, 41);" class="far fa-trash-alt"></i></button></a>
 
 						<a
 							href="/updateform/{{this.id}}"
 							class="card-link"
 						><button
+								title="Edit/Update Item"
+								id="updButton"
 								type="button"
-								class="btn btn-warning"
-							>Update</button></a>
+								class="btn btn-success btn-outline-success"
+							><i  style="color: greenyellow;" class="fas fa-redo-alt"></i></button></a>
 					</div>
-				</div>
+					</div>
+					</div>
 			</div>
 		{{/each}}
 	</div>
