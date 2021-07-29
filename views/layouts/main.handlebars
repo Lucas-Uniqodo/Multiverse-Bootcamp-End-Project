@@ -250,7 +250,7 @@
                         <div class="row">${cartItem.title}</div>
                     </div>
 
-                    <div class="col">&pound; ${cartItem.price} <span class="bordered">quantity: ${cartItem.quantity}</span> <span onclick="deleteFromCart(${cartItem.id});" class="close">&#10005;</span></div> 
+                    <div class="col">&pound; ${cartItem.price} <br> <span >Quantity: ${cartItem.quantity}</span> <span onclick="deleteFromCart(${cartItem.id});" class="close">&#10005;</span></div> 
 
                 </div>`
 			document.getElementById("cartList").appendChild(listItem)
