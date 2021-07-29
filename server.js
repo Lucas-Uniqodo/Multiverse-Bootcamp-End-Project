@@ -51,6 +51,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//fairly self explanatory, displays the handlebars pages
 app.get("/home", async (request, response) => {
 	response.render("home");
 });
@@ -59,24 +60,28 @@ app.get("/addForm", async (request, response) => {
 	response.render("addForm");
 });
 
-app.get("/updateForm", async (request, response) => {
-	response.render("updateForm");
-});
-
-app.get("/", async (request, response) => {
-	response.render("home");
-});
-
-app.get("/categories", async (request, response) => {
-	const categories = await Category.findAll();
-	console.log(categories[0].categoryImage);
-	response.render("categories", { categories });
+// sends items values to the handlebar file, so the form can be filled in with it's existing values
+app.get("/updateForm/:id", async (request, response) => {
+	const item = await Item.findByPk(request.params.id);
+	response.render("updateForm", { item });
 });
 
 app.get("/cart", async (request, response) => {
 	response.render("cart");
 });
 
+app.get("/", async (request, response) => {
+	response.redirect("/home");
+});
+
+// gets all categories from the database and sends them to the handlebars file to be displayed
+app.get("/categories", async (request, response) => {
+	const categories = await Category.findAll();
+	console.log(categories[0].categoryImage);
+	response.render("categories", { categories });
+});
+
+// gets all items from the database from a single category and sends them to the handlebars file to be displayed
 app.get("/categories/:id", async (request, response) => {
 	const category = await Category.findOne({
 		where: { id: request.params.id },
@@ -86,7 +91,7 @@ app.get("/categories/:id", async (request, response) => {
 });
 
 //extension admin stuff
-//create Item
+//creates a new Item
 app.post("/items", async (request, response) => {
 	const item = await Item.create({
 		title: request.body.title,
@@ -96,21 +101,17 @@ app.post("/items", async (request, response) => {
 		description: request.body.description,
 	});
 
-	response.redirect("/categories/" + item.CategoryId); //might not work, haven't tested yet
+	response.redirect("/categories/" + item.CategoryId); //redirects user to the corressponding category page
 });
 
-//edit Item
-app.get("/updateForm/:id", async (request, response) => {
-	const item = await Item.findByPk(request.params.id);
-	response.render("updateForm", { item });
-});
-
-app.get("/item/:id/put", async (request, response) => {
-	const item = await Item.findByPk(request.params.id);
+//edits an existing Item
+app.post("/item/:id/put", async (request, response) => {
+	let item = await Item.findByPk(request.params.id);
 	if (!item) {
 		return response.status(404).send("NOT FOUND");
 	}
 
+	console.log(request.body);
 	await Item.update(
 		{
 			title: request.body.title,
@@ -124,10 +125,13 @@ app.get("/item/:id/put", async (request, response) => {
 		}
 	);
 
-	response.redirect("/categories/" + item.CategoryId); //might not work, haven't tested yet
+	item = await Item.findByPk(request.params.id);
+
+	console.log("update complete");
+	response.redirect("/categories/" + item.CategoryId); //redirects user to the corressponding category page
 });
 
-//delete item
+//deletes an Item
 app.get("/item/:id/delete", async (request, response) => {
 	const item = await Item.findByPk(request.params.id);
 	if (!item) {
@@ -137,7 +141,7 @@ app.get("/item/:id/delete", async (request, response) => {
 		where: { id: request.params.id },
 	});
 
-	response.redirect("/categories/" + item.CategoryId);
+	response.redirect("/categories/" + item.CategoryId); //redirects user to the corressponding category page
 });
 
 app.listen(port, () => {

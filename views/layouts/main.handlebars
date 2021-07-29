@@ -208,23 +208,26 @@
 
 	//Pushes Items to List
 	function addToCart(item) {
-		quantity = document.getElementById("quantity"+item.id).value
+		quantity = Number(document.getElementById("quantity"+item.id).value)
 		if (cartList.has(item.id)) {
-			item["quantity"] = parseInt(item["quantity"]) + parseInt(quantity)
-		} else {
-			item["quantity"] = parseInt(quantity)
-		}
-		console.log(item["quantity"], parseInt(quantity))
-		cartList.set(item.id, item)
 
-		console.log(quantity)
+			let previousQuantity = cartList.get(item.id).quantity
+			let newQuantity = previousQuantity + quantity
+			item.quantity = newQuantity
+
+		} else {
+			item.quantity = parseInt(quantity)
+		}
+
+		cartList.set(item.id, item)
         localStorage.setItem("cartList", JSON.stringify(Array.from(cartList.entries())))
-		displayCart()
     }
 
-	{{!-- localStorage.myMap = JSON.stringify(Array.from(map.entries()));
-
-	map = new Map(JSON.parse(localStorage.myMap)); --}}
+	function deleteFromCart(id) {
+		cartList.delete(id)
+        localStorage.setItem("cartList", JSON.stringify(Array.from(cartList.entries())))
+		displayCart()
+	}
 
   	// Creates/Displays List of Items in Cart
 	function displayCart() {
@@ -233,24 +236,23 @@
 		let numberOfItems = 0
 
 		for (let [key, cartItem] of cartList) {
-			console.log(itemTotal, cartItem.price);
-			itemTotal += cartItem.price;
-			numberOfItems ++;
+			itemTotal += cartItem.price * cartItem.quantity;
+			numberOfItems += cartItem.quantity;
 			let listItem = document.createElement("div");
 			listItem.innerHTML = `<div class="row main align-items-center">
                     <div class="col-2"><img class="img-fluid" src="${cartItem.image}"></div>
                     <div class="col">
                         <div class="row">${cartItem.title}</div>
                     </div>
-                    <div class="col">&pound; ${cartItem.price} <span class="close">&#10005;</span></div> 
+                    <div class="col">&pound; ${cartItem.price} <span>quantity: ${cartItem.quantity}</span> <span onclick="deleteFromCart(${cartItem.id});" class="close">&#10005;</span></div> 
                 </div>`
 			document.getElementById("cartList").appendChild(listItem)
 		}
 
 		document.getElementById("numItems").innerText = numberOfItems + " Items";
 		document.getElementById("itemTotal").innerText = "£" + itemTotal;
-		let shippingTotal = itemTotal + parseFloat(document.getElementById("shippingPrice").value);
-		document.getElementById("totalPrice").innerText = "£" + shippingTotal;
+
+		document.getElementById("totalPrice").innerText = "£" + (itemTotal + parseFloat(document.getElementById("shippingPrice").value));
 
 	}
 
