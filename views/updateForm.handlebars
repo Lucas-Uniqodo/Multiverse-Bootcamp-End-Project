@@ -6,7 +6,7 @@
      <!--Admin Form: Edit Item Data to change existing item -->
 
     <div style="text-shadow: 1px 1px black; color:orange" class="col-md-12">
-        <h3 style="text-shadow: 1px 1px orange;">Add item</h3>
+        <h3 style="text-shadow: 1px 1px orange;">Update item</h3>
         <div class="row">
 
         <div class="col-md-3"></div>
@@ -14,17 +14,17 @@
         <div class="mb-3">
             <form action="/item/{{item.id}}/put" method="POST">
                 <label for="image" class="form-label">Item Image Link:</label>
-                <input type="text" class="form-control" id="image" name="image" placeholder="Enter image link here.." value="{{item.image}}" ></div>
+                <input type="text" class="form-control" id="image" name="image" placeholder="Edit image link here.." value="{{item.image}}" ></div>
                 <div class="mb-3">
                     <label label for="title" class="form-label">Item Title:</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter item title.." value="{{item.title}}"></div>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Edit item title.." value="{{item.title}}"></div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Item Description:</label>
-                        <input type="text" class="form-control" id="description" name="description" placeholder="Enter item description.." value="{{item.description}}"></div>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Edit item description.." value="{{item.description}}"></div>
                         <div class="row g-3">
                             <div class="col">
                                 <label for="price" class="form-label">Item Price:</label>
-                                <input id="price" name="price" type="text" class="form-control" placeholder="Enter item price.." aria-label="Enter item price.." value="{{item.price}}"></div>
+                                <input id="price" name="price" type="text" class="form-control" placeholder="Edit item price.." aria-label="Enter item price.." value="{{item.price}}"></div>
                                 <div class="col">
                                     <label class="form-label" for="categoryId">Select Category:</label>
                                     <select id="categoryId" name="categoryId" class="form-select" value="{{item.categoryId}}">
@@ -38,7 +38,7 @@
                             <br>
                                 <br>
                                     <div class="d-grid gap-2 col-6 mx-auto">
-                                        <input style="border-color:black;" class="btn btn-warning" type="submit" value="Submit">Submit</button>
+                                        <input style="border-color:black;" class="btn btn-warning" type="submit" value="Submit"></button>
                                     </div>
                                 </div>
                                 <div class="col-md-3"></div>

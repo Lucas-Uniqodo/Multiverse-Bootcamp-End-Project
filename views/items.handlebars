@@ -4,11 +4,12 @@
 
 	 <!--Bootstrap card looping for every item in that category from database-->
 
-	<div class="adminOnly" style="justify-content: center; visibility: hidden;">
-		<a href="/addform" class="card-link"><button
+	<div class="adminOnly container" style=" visibility: hidden;" align="center">
+		<a style="text-align:center; color:yellow" href="/addform" class="card-link"><button
 				type="button"
-				class="btn btn-warning"
-			>Add!</button></a>
+				class="btn btn-secondary btn-outline-secondary"
+			><i class="far fa-plus-square"></i> Add Item</button></a>
+			
 	</div>
 
 	<div class="row">
@@ -40,7 +41,7 @@
 				</ul>
 
 				<div class="card-body">
-					<div class="btn-group" role="group" aria-label="Basic outlined example">
+					<div class="btn-toolbar" role="group" aria-label="Basic outlined example">
 					<a
 						onclick="addToCart({{json this}})"
 						href="#"
@@ -50,26 +51,27 @@
 					 <!--Admin buttons to Delete/Update items in category-->	
 				
 				<div class="adminOnly" style="visibility: hidden;">
-
-						<a
+					
+						<a  
 							href="/item/{{this.id}}/delete"
 							class="card-link"
 						><button
 								title="Delete Item"
 						        id="delButton"
 								type="button"
-								class="btn btn-dark btn-outline-dark"
+								class="btn btn-dark btn-outline-dark ml-4"
 							><i  style="color: rgb(196, 41, 41);" class="far fa-trash-alt"></i></button></a>
-
-						<a
+							
+						<a 
 							href="/updateform/{{this.id}}"
 							class="card-link"
 						><button
 								title="Edit/Update Item"
 								id="updButton"
 								type="button"
-								class="btn btn-success btn-outline-success"
+								class="btn btn-success btn-outline-success ml-2"
 							><i  style="color: greenyellow;" class="fas fa-redo-alt"></i></button></a>
+							
 					</div>
 					</div>
 					</div>
