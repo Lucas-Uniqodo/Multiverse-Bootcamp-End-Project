@@ -1,13 +1,14 @@
+{{! Refers to the whole box}}
 <div class="cartCard">
-	{{! Refers to the whole box}}
 	<div class="row">
 		<div class="col-md-8 cart">
 			<div class="title">
 				<div class="row">
 					<div class="col">
+                        {{!Header for card}}
 						<h4><b>Shopping Cart</b></h4>
-						{{!Header for card}}
 					</div>
+                    {{!Displays number of items}}
 					<div
 						class="col align-self-center text-right text-muted"
 						id="numItems"
@@ -21,25 +22,23 @@
 
 			</div>
 
+            {{!Arrow button at bottom takes you back home}}
 			<div class="back-to-shop"><a href="/home">&leftarrow;</a><a
 					href="/home"
 					class="text-muted"
 				>Back to shop</a></div>
-			{{!Arrow button at bottom takes you back home}}
 		</div>
+        {{!Right box stuff}}
 		<div class="col-md-4 summary">
-			{{!Right box stuff}}
 			<div>
 				<h5><b>Summary</b></h5>
-				{{!Title for right section (for total prices etc)}}
 			</div>
 			<hr />
 			<div class="row">
 				{{!Has CSS that adds dividers}}
 				<div class="col" style="padding-left:0;">ITEMS</div>
-				{{!Should pull amount of items and displaya amount as well as their prices}}
+				{{!Total Price of items}}
 				<div class="col text-right" id="itemTotal">&pound; 00.00</div>
-				{{!Hard-coded prices}}
 			</div>
 			<form>
 				{{!Delivery drop down}}
@@ -59,12 +58,13 @@
 				class="row"
 				style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;"
 			>
-				{{!this div should total the items as well as selected delivery option price}}
+				{{!Total price of items + delivery}}
 				<div class="col">TOTAL PRICE</div>
 				<div class="col text-right" id="totalPrice">&pound; 00.00</div>
 			</div>
+
+            {{!Just for looks}}
 			<button class="btn">CHECKOUT</button>
-			{{!Just for looks}}
 		</div>
 	</div>
 </div>
