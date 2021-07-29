@@ -31,6 +31,13 @@
 			#delButton {float: right;}
 			#updButton{float: right;}
 			#addCart{float:right;}
+
+			.bordered {
+    			width: 40px;
+   				height: 50px;
+    			padding: 10px;
+    			border: 5px inset rgb(230, 152, 37);
+  			}
 		</style>
 	</head>
 
@@ -244,7 +251,7 @@
                     <div class="col">
                         <div class="row">${cartItem.title}</div>
                     </div>
-                    <div class="col">&pound; ${cartItem.price} <span>quantity: ${cartItem.quantity}</span> <span onclick="deleteFromCart(${cartItem.id});" class="close">&#10005;</span></div> 
+                    <div class="col">&pound; ${cartItem.price} <span class="bordered">quantity: ${cartItem.quantity}</span> <span onclick="deleteFromCart(${cartItem.id});" class="close">&#10005;</span></div> 
                 </div>`
 			document.getElementById("cartList").appendChild(listItem)
 		}
