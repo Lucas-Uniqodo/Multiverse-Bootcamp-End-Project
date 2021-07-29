@@ -265,25 +265,17 @@
 
     // Changes UI to display admin features
 	function changeAdminMode() {
-		if (adminMode == false) {
-			console.log("adminMode:on")
+		let adminOptions = document.getElementsByClassName("adminOnly")
 
-			adminOptions = document.getElementsByClassName("adminOnly")
-			console.log(adminOptions)
+		if (adminMode == false) {
 			Array.from(adminOptions).forEach((button) => {	
 				button.style = "visibility: visible;"
 			});
-
-
 		adminMode = true
 		} else {
-			console.log("adminMode:off")
-
-			adminOptions = document.getElementsByClassName("adminOnly")
 			Array.from(adminOptions).forEach((button) => {	
 				button.style = "visibility: hidden;"
 		});
-
 		adminMode = false
 		}
 	}
