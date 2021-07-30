@@ -77,7 +77,6 @@ app.get("/", async (request, response) => {
 // gets all categories from the database and sends them to the handlebars file to be displayed
 app.get("/categories", async (request, response) => {
 	const categories = await Category.findAll();
-	console.log(categories[0].categoryImage);
 	response.render("categories", { categories });
 });
 
@@ -97,7 +96,7 @@ app.post("/items", async (request, response) => {
 		title: request.body.title,
 		image: request.body.image,
 		price: request.body.price,
-		CategoryId: request.body.categoryId,
+		CategoryId: request.body.CategoryId,
 		description: request.body.description,
 	});
 
@@ -111,13 +110,12 @@ app.post("/item/:id/put", async (request, response) => {
 		return response.status(404).send("NOT FOUND");
 	}
 
-	console.log(request.body);
 	await Item.update(
 		{
 			title: request.body.title,
 			image: request.body.image,
 			price: request.body.price,
-			CategoryId: request.body.categoryId,
+			CategoryId: request.body.CategoryId,
 			description: request.body.description,
 		},
 		{
@@ -127,7 +125,6 @@ app.post("/item/:id/put", async (request, response) => {
 
 	item = await Item.findByPk(request.params.id);
 
-	console.log("update complete");
 	response.redirect("/categories/" + item.CategoryId); //redirects user to the corressponding category page
 });
 
